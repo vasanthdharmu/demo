@@ -1,0 +1,35 @@
+<mat-form-field class="interest-list">
+  <h1>Select your Interests</h1>
+  <mat-chip-list #chipList aria-label="Interest selection">
+    <mat-chip
+      *ngFor="let interest of interests"
+      [selectable]="selectable"
+      [removable]="removable"
+      (removed)="remove(interest)"
+    >
+      {{ interest }}
+      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+    </mat-chip>
+    <input
+      #interestInput
+      [formControl]="interestCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)"
+    />
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option
+      *ngFor="let interest of filteredInterests | async"
+      [value]="interest"
+    >
+      {{ interest }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+<div class="align-center">
+  <button type="button" mat-raised-button color="primary" (click)="goToHome()">
+    Continue
+  </button>
+</div>

@@ -1,0 +1,11 @@
+.interest-list {
+  width: 90%;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.mat-form-field-wrapper {
+  width: 100%;
+}
