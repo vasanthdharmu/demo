@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AppService } from '../services/app.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,17 +10,18 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class SignupComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    username: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
     confirmPassword: new FormControl('', [Validators.required]),
   });
   error = '';
-  constructor(private router: Router) {}
+  constructor(private router: Router, private appService: AppService) {}
 
   ngOnInit(): void {}
 
   submit() {
     if (this.form.valid) {
+      this.appService.setLoggedIn(this.form.value.username);
       this.router.navigateByUrl('/post-signup');
     } else {
       this.error = 'Please enter all the fields.';

@@ -1,1 +1,43 @@
-<router-outlet></router-outlet>
+<div class="page-container">
+  <header>
+    <div>
+      <button
+        mat-button
+        class="menu-button"
+        (click)="sidenav.toggle()"
+        *ngIf="user"
+      >
+        <mat-icon>{{ isMenuOpen ? "menu_open" : "menu" }}</mat-icon>
+      </button>
+
+      <a routerLink="/">
+        <span class="app-title">Home</span>
+      </a>
+    </div>
+  </header>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav
+      #sidenav
+      autoFocus="false"
+      mode="over"
+      [(opened)]="isMenuOpen"
+      class="sidenav"
+      (click)="onSidenavClick()"
+    >
+      <a mat-button routerLink="/page1">Home</a>
+      <a mat-button routerLink="/page2">Profile</a>
+      <a mat-button routerLink="/page3">Search</a>
+      <a mat-button routerLink="/page4">Analytics</a>
+      <a mat-button routerLink="/page5">My Diary</a>
+      <a mat-button routerLink="/page5">Saved Articles</a>
+      <a mat-button routerLink="/page5">Library</a>
+      <a mat-button routerLink="/page5">Store</a>
+      <a mat-button routerLink="/page5">Settings</a>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
