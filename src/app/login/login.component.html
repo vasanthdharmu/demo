@@ -1,42 +1,146 @@
-<mat-card>
-  <mat-card-title>Login</mat-card-title>
-  <mat-card-content>
-    <form [formGroup]="form" (ngSubmit)="submit()">
-      <p>
-        <mat-form-field>
-          <input
-            type="text"
-            matInput
-            placeholder="Username"
-            formControlName="username"
-          />
-        </mat-form-field>
+<div class="row full-width no-gutters">
+  <div class="col-5 login-left">
+    <h2 class="login-page-heading text-align-center">WRC</h2>
+  </div>
+  <div class="col-7">
+    <mat-card *ngIf="showSignIn">
+      <mat-card-title>Login to your account</mat-card-title>
+      <p class="text-align-center">
+        Don't have an account? <a (click)="displaySignUp()">Sign Up Free!</a>
       </p>
+      <mat-card-content>
+        <form [formGroup]="signInForm" (ngSubmit)="siginIn()">
+          <p>
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="Email Address"
+                formControlName="username"
+              />
+            </mat-form-field>
+          </p>
 
-      <p>
-        <mat-form-field>
-          <input
-            type="password"
-            matInput
-            placeholder="Password"
-            formControlName="password"
-          />
-        </mat-form-field>
+          <p>
+            <mat-form-field>
+              <input
+                type="password"
+                matInput
+                placeholder="Password"
+                formControlName="password"
+              />
+            </mat-form-field>
+          </p>
+
+          <p *ngIf="showError" class="error">
+            {{ signInError }}
+          </p>
+          <div class="row padding-bottom-md">
+            <div class="col-6"><input type="checkbox" /> Remember me</div>
+            <div class="col-6 text-align-right">
+              <a (click)="displayRecoverPassword()">Forgot password?</a>
+            </div>
+          </div>
+          <div class="button">
+            <button type="submit" class="btn btn-primary">
+              Login with email
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="showSignUp">
+      <mat-card-title>Sign up for free!</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+          <p>
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="Email Address"
+                formControlName="username"
+              />
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="Full name"
+                formControlName="name"
+              />
+            </mat-form-field>
+          </p>
+
+          <p>
+            <mat-form-field>
+              <input
+                type="password"
+                matInput
+                placeholder="Password"
+                formControlName="password"
+              />
+            </mat-form-field>
+          </p>
+
+          <p *ngIf="showError" class="error">
+            {{ signUpError }}
+          </p>
+
+          <p>
+            I agree to the <a>privacy policy</a> and <a>terms of service</a>
+          </p>
+          <div class="button">
+            <button type="submit" class="btn btn-primary">
+              Sign up with email
+            </button>
+          </div>
+          <p><a (click)="displaySignIn()">Already have an account?</a></p>
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="showRecoverPassword">
+      <mat-card-title>Recover your password</mat-card-title>
+      <p class="text-align-center">
+        Fill in your e-mail address below and we will <br />
+        send you an email with further instructions.
       </p>
+      <mat-card-content>
+        <form
+          [formGroup]="recoverPasswordForm"
+          (ngSubmit)="recoverYourPassword()"
+        >
+          <p>
+            <mat-form-field>
+              <input
+                type="text"
+                matInput
+                placeholder="Email Address"
+                formControlName="username"
+              />
+            </mat-form-field>
+          </p>
 
-      <p *ngIf="error" class="error">
-        {{ error }}
-      </p>
+          <p *ngIf="showError" class="error">
+            {{ recoverPasswordError }}
+          </p>
 
-      <div class="button">
-        <button type="submit" mat-raised-button color="primary">Login</button>
-      </div>
-
-      <div class="align-center">
-        <button type="button" mat-raised-button (click)="signUp()">
-          Signup
-        </button>
-      </div>
-    </form>
-  </mat-card-content>
-</mat-card>
+          <div class="button">
+            <button type="submit" class="btn btn-primary">
+              Recover your password
+            </button>
+          </div>
+          <p class="padding-top-md">
+            <a (click)="displaySignIn()">Already have an account?</a>
+          </p>
+          <p><a (click)="displaySignUp()">Don't have an account?</a></p>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { PostSignupComponent } from './post-signup/post-signup.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, SignupComponent, HomeComponent, PostSignupComponent],
@@ -19,6 +20,7 @@ import { PostSignupComponent } from './post-signup/post-signup.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

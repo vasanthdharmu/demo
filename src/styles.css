@@ -12,3 +12,18 @@ body {
   display: flex;
   justify-content: center;
 }
+.full-width {
+  width: 100%;
+}
+.text-align-center {
+  text-align: center;
+}
+.text-align-right {
+  text-align: right;
+}
+.padding-top-md {
+  padding-top: 1rem;
+}
+.padding-bottom-md {
+  padding-bottom: 1rem;
+}
