@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  style,
+  state,
+  animate,
+  transition,
+  trigger,
+} from '@angular/animations';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -8,6 +15,14 @@ import { AppService } from '../services/app.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ transform: 'translateX(-10%)', opacity: 0 }),
+        animate('300ms', style({ transform: 'translateX(0)', opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class LoginComponent implements OnInit {
   signInForm: FormGroup = new FormGroup({
@@ -29,6 +44,8 @@ export class LoginComponent implements OnInit {
   showSignIn = true;
   showSignUp = false;
   showRecoverPassword = false;
+  hideLoginPassword = true;
+  hideSignupPassword = true;
   constructor(private router: Router, private appService: AppService) {}
 
   ngOnInit(): void {}

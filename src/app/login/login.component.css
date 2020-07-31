@@ -47,3 +47,6 @@ form {
 .login-page-heading {
   padding-top: 5rem;
 }
+.login-page-card {
+  min-height: 500px;
+}
