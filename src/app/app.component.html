@@ -1,4 +1,4 @@
-<div class="page-container">
+<!--<div class="page-container">
   <header>
     <div>
       <button
@@ -9,7 +9,6 @@
       >
         <mat-icon>{{ isMenuOpen ? "menu_open" : "menu" }}</mat-icon>
       </button>
-
       <a routerLink="/">
         <span class="app-title">WRC</span>
       </a>
@@ -42,4 +41,22 @@
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
+</div>
+-->
+
+<div class="container-fluid header">
+  <header class="container">
+    <div class="row">
+      <div class="col-12">
+        <a routerLink="/">
+          <span class="app-title">WRC</span>
+        </a>
+      </div>
+    </div>
+  </header>
+</div>
+<div class="container-fluid content-container">
+  <main class="container">
+    <router-outlet></router-outlet>
+  </main>
 </div>

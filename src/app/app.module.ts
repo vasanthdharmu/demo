@@ -11,6 +11,8 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { PostSignupComponent } from './post-signup/post-signup.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ArticleComponent } from './article/article.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SignupComponent,
     HomeComponent,
     PostSignupComponent,
+    SidebarComponent,
+    ArticleComponent,
   ],
   imports: [
     BrowserModule,
